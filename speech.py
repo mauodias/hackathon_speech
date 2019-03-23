@@ -50,8 +50,8 @@ def cli(members):
             s.speak()
         else:
             s = Speech(text='Nome não encontrado.', language='pt')
-            s.speak()
             print('Nome não encontrado.')
+            s.speak()
         sleep(3)
 
 if __name__ == '__main__':
