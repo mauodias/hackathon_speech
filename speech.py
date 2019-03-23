@@ -41,18 +41,20 @@ def cli(members):
         os.system('clear')
         name = input('> ')
         if name.lower() == 'q':
-            print('Goodbye.')
+            s = Speech(text='Tchau!', language='pt')
+            print('Tchau!')
+            s.speak()
             sys.exit(0)
-        tm = members.get(name, None)
+        tm = members.get(name.lower(), None)
         if tm:
             s = Speech(text=str(tm), language='pt')
             print(str(tm))
             s.speak()
         else:
-            s = Speech(text='Nome não encontrado.', language='pt')
-            print('Nome não encontrado.')
+            s = Speech(text=f'{name}, nome não encontrado.', language='pt')
+            print(f'{name}, nome não encontrado.')
             s.speak()
-        sleep(3)
+        sleep(2)
 
 if __name__ == '__main__':
     datastore = DataStore('times.json')
