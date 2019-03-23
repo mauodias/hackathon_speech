@@ -1,8 +1,20 @@
 import os
 import sys
 import json
+import random
 from gtts import gTTS
 from time import sleep
+
+BYE = [
+        {'text': 'Sayonara', 'lang': 'ja'},
+        {'text': 'Tchau', 'lang': 'pt'},
+        {'text': 'Au revoir', 'lang': 'fr'},
+        {'text': 'Goodbye', 'lang': 'en'},
+        {'text': 'Ciao', 'lang': 'it'},
+        {'text': 'Auf Wiedersehen', 'lang': 'de'},
+        {'text': 'Adiós', 'lang': 'es'},
+        {'text': 'Vale', 'lang': 'la'}
+        ]
 
 class Speech:
 
@@ -41,8 +53,9 @@ def cli(members):
         os.system('clear')
         name = input('> ')
         if name.lower() == 'q':
-            s = Speech(text='Tchau!', language='pt')
-            print('Tchau!')
+            b = random.choice(BYE)
+            s = Speech(text=f'{b["text"]}!', language=f'{b["lang"]}')
+            print(f'{b["text"]}!')
             s.speak()
             sys.exit(0)
         tm = members.get(name.lower(), None)
